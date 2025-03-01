@@ -10,9 +10,9 @@ import { useTelegram } from "./Hooks/useTelegram";
 function App() {
   const [tg, setTg] = useState(null);
   const [username, setUsername] = useState("");
-  // const webApp = useTelegram();
+  const { webApp } = useTelegram();
   const navigate = useNavigate();
-  const webApp = window.Telegram.WebApp;
+  // const webApp = window.Telegram.WebApp;
 
   useEffect(() => {
     if (window.Telegram?.WebApp) {
