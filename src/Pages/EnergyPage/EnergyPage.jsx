@@ -1,9 +1,11 @@
-import { backButton, init } from '@telegram-apps/sdk';
 import React from 'react'
 
 const EnergyPage = () => {
 
-  backButton.mount();
+  window.Telegram.WebApp.BackButton.onClick(() => {
+    alert("Navigated back!");
+    history.back();
+  });
 
   return (
     <div>Get EnergyPage</div>
