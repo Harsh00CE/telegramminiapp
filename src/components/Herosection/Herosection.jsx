@@ -4,7 +4,7 @@ import Footer from '../Footer/Footer';
 const Herosection = ({ username }) => {
 
     const [energy, setEnergy] = useState(81);
-    const [tapsLeft, setTapsLeft] = useState(1000);
+    const [tapsLeft, setTapsLeft] = useState(100);
     const [autoClicker, setAutoClicker] = useState(false);
 
     const handleTap = () => {
