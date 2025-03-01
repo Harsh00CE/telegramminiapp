@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import Herosection from "./components/Herosection/Herosection";
 import Footer from "./components/Footer/Footer";
 import Mybank from "./Pages/Mybank/Mybank";
@@ -10,11 +10,11 @@ import EnergyStakingPage from "./Pages/EnergyStakingPage/EnergyStakingPage";
 function App() {
   const [tg, setTg] = useState(null);
   const [username, setUsername] = useState("");
+  const webApp = window.Telegram.WebApp;
 
   useEffect(() => {
     if (window.Telegram?.WebApp) {
-      const webApp = window.Telegram.WebApp;
-      webApp.expand(); // Expand to full screen
+      webApp.expand();
       setTg(webApp);
 
       console.log("WebApp initialized", webApp);
@@ -23,16 +23,36 @@ function App() {
     }
   }, []);
 
+  const navigate = useNavigate();
+
+  const onBackClick = useCallback(() => {
+    navigate(-1)
+  }, [navigate])
+
+  const onMainClick = useCallback(() => {
+    webApp.showAlert("Main button click")
+  }, [webApp])
+
+  useEffect(() => {
+    webApp.ready()
+    webApp.BackButton.onClick(onBackClick)
+    webApp.MainButton.onClick(onMainClick)
+    return () => {
+      webApp.BackButton.offClick(onBackClick)
+      webApp.MainButton.offClick(onMainClick)
+    };
+  }, [webApp])
+
+
+
   return (
-    <Router> {/* Ensure everything is inside Router */}
-      <Routes>
-        <Route path="/" element={<Herosection username={username} />} />
-        <Route path="/mybank" element={<Mybank />} />
-        <Route path="/myteam" element={<Myteam />} />
-        <Route path="/energystaking" element={<EnergyStakingPage />} />
-        <Route path="/energy" element={<EnergyPage />} />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<Herosection username={username} />} />
+      <Route path="/mybank" element={<Mybank />} />
+      <Route path="/myteam" element={<Myteam />} />
+      <Route path="/energystaking" element={<EnergyStakingPage />} />
+      <Route path="/energy" element={<EnergyPage />} />
+    </Routes>
   );
 }
 
