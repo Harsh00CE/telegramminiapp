@@ -1,16 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import Herosection from "./components/Herosection/Herosection";
-import Footer from "./components/Footer/Footer";
 import Mybank from "./Pages/Mybank/Mybank";
 import Myteam from "./Pages/Myteam/Myteam";
 import EnergyPage from "./Pages/EnergyPage/EnergyPage";
 import EnergyStakingPage from "./Pages/EnergyStakingPage/EnergyStakingPage";
+import { useTelegram } from "./Hooks/useTelegram";
 
 function App() {
   const [tg, setTg] = useState(null);
   const [username, setUsername] = useState("");
-  const webApp = window.Telegram.WebApp;
+  const webApp = useTelegram();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (window.Telegram?.WebApp) {
@@ -23,7 +24,7 @@ function App() {
     }
   }, []);
 
-  const navigate = useNavigate();
+
 
   const onBackClick = useCallback(() => {
     navigate(-1)
