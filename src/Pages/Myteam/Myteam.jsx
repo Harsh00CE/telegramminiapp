@@ -1,6 +1,10 @@
+import { backButton } from '@telegram-apps/sdk-react'
 import React from 'react'
 
 const Myteam = () => {
+
+    backButton.mount();
+
     return (
         <div className="w-full flex justify-between items-center p-4 bg-gray-900 rounded-lg">
             <span>My Team</span>
