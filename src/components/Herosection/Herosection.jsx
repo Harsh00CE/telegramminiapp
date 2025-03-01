@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Herosection = ( { username } ) => {
+const Herosection = ({ username }) => {
 
     const [energy, setEnergy] = useState(81);
     const [tapsLeft, setTapsLeft] = useState(1000);
@@ -45,6 +45,9 @@ const Herosection = ( { username } ) => {
             <div className="mt-6" onClick={handleTap}>
                 <img src="/coin.png" alt="coin" className="w-40 cursor-pointer" />
                 <p className="mt-2 text-yellow-400">TAPS LEFT: ⚡ {tapsLeft}</p>
+                <div className="w-full max-w-sm bg-gray-700 rounded-full h-4 mt-2">
+                    <div className="bg-yellow-500 h-4 rounded-full" style={{ width: `${(tapsLeft / 1000) * 100}%` }}></div>
+                </div>
             </div>
 
             {/* Footer Navigation */}
