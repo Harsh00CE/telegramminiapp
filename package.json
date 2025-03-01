@@ -12,6 +12,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.0.9",
     "@telegram-apps/sdk": "^3.5.1",
+    "@telegram-apps/sdk-react": "^3.1.2",
     "dotenv": "^16.4.7",
     "nodemon": "^3.1.9",
     "react": "^19.0.0",
