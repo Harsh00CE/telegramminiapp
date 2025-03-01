@@ -50,13 +50,7 @@ const Herosection = ({ username }) => {
                 </div>
             </div>
 
-            {/* Footer Navigation */}
-            <div className="mt-6 grid grid-cols-4 gap-2 w-full max-w-sm">
-                <button className="bg-gray-700 p-2 rounded">My Bank</button>
-                <button className="bg-gray-700 p-2 rounded">My Team</button>
-                <button className="bg-gray-700 p-2 rounded">BTN</button>
-                <button className="bg-yellow-500 text-black p-2 rounded">Get Energy</button>
-            </div>
+            <Footer />
         </div>
     )
 }
