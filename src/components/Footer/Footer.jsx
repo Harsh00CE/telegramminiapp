@@ -5,7 +5,10 @@ const Footer = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="mt-6 grid grid-cols-4 gap-2 w-full max-w-sm">
+        <div className="grid grid-cols-4 gap-2 w-full max-w-sm">
+            <button onClick={() => navigate("/")} className="bg-gray-700 p-2 rounded"> 
+                Home
+            </button>
             <button onClick={() => navigate("/mybank")} className="bg-gray-700 p-2 rounded">
                 My Bank
             </button>
