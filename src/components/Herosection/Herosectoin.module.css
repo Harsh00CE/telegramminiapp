@@ -1,0 +1,11 @@
+.no-zoom {
+    touch-action: manipulation; 
+    user-select: none; 
+}
+
+.select-none {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
