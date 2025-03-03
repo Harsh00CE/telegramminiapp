@@ -13,7 +13,7 @@ const Herosection = ({ username }) => {
 
 
     if (backButton.hide.isAvailable()) {
-        backButton.hide();
+        backButton.show();
         backButton.isVisible();
     }
 
