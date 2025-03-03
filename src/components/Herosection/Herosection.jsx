@@ -65,7 +65,7 @@ const Herosection = ({ username }) => {
                 <button className="bg-yellow-500 text-black px-4 py-2 rounded">🏆 Leaderboard</button>
             </div>
 
-            <div className="mt-6 relative flex justify-center items-center" onClick={handleTap}>
+            <div className="mt-6 p-10 relative flex justify-center items-center" onClick={handleTap}>
                 <motion.img
                     src={usdt}
                     alt="coin"
