@@ -16,7 +16,11 @@ const Herosection = ({ username }) => {
         document.addEventListener("gesturestart", (e) => e.preventDefault());
     }, []);
 
-    const handleTap = () => {
+    const handleTap = (e) => {
+        const tap = e.currentTarget;
+        const rect = tap.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
         if (tapsLeft > 0) {
             setEnergy(energy + 1);
             setTapsLeft(tapsLeft - 1);
@@ -28,8 +32,8 @@ const Herosection = ({ username }) => {
 
            const newEffect = {
                 id: Date.now(),
-                x: Math.random() * 80 - 40,
-                y: Math.random() * -50 - 10,
+                x: x,
+                y: y,
             };
 
             setTapEffects([...tapEffects, newEffect]);
