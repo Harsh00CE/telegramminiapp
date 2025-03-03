@@ -54,7 +54,7 @@ const Herosection = ({ username }) => {
                 </div>
             </div>
 
-            <div className="mt-4 bg-gray-800 p-4 text-center rounded-lg w-full max-w-sm">
+            <div className="mt-4 bg-gray-800 bg-opacity-0 p-4 text-center rounded-lg w-full max-w-sm">
                 <p className="text-yellow-500">TODAY ENERGY BALANCE</p>
                 <h1 className="text-4xl font-bold">{energy}</h1>
             </div>
