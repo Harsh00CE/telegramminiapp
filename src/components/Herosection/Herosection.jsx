@@ -9,10 +9,10 @@ const Herosection = ({ username }) => {
     const [autoClicker, setAutoClicker] = useState(false);
     const [tapEffects, setTapEffects] = useState([]);
     const [rotation, setRotation] = useState(0);
-    const [scale, setScale] = useState(1); 
+    const [scale, setScale] = useState(1);
 
     useEffect(() => {
-        
+
         document.addEventListener("gesturestart", (e) => e.preventDefault());
     }, []);
 
@@ -25,12 +25,12 @@ const Herosection = ({ username }) => {
             setEnergy(energy + 1);
             setTapsLeft(tapsLeft - 1);
 
-            setRotation((prev) => prev + 360); 
+            setRotation((prev) => prev + 360);
             setScale(1.2);
 
             setTimeout(() => setScale(1), 200);
 
-           const newEffect = {
+            const newEffect = {
                 id: Date.now(),
                 x: Math.random() * 100 - 40,
                 y: Math.random() * -100 - 10,
@@ -92,6 +92,18 @@ const Herosection = ({ username }) => {
                     </motion.span>
                 ))}
             </div>
+
+            <div className="flex justify-between w-full max-w-sm mt-4">
+                <div className="flex-col items-center space-x-2">
+                    <div className="content-center">🏆</div>
+                    <div>BitMEM</div>
+                </div>
+                <div className=" flex-col items-center">
+                    <div className="content-center">🏆</div>
+                    <div>BitMEM</div>
+                </div>
+            </div>
+
 
             <p className="mt-2 text-yellow-400">TAPS LEFT: ⚡ {tapsLeft}</p>
 

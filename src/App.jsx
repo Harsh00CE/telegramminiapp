@@ -52,7 +52,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Herosection />} />
+        <Route path="/" element={<Herosection username={username} />} />
         <Route path="/mybank" element={<Mybank />} />
         <Route path="/myteam" element={<Myteam />} />
         <Route path="/energystaking" element={<EnergyStakingPage />} />
