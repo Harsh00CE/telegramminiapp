@@ -58,7 +58,6 @@ function App() {
         <Route path="/energystaking" element={<EnergyStakingPage />} />
         <Route path="/energy" element={<EnergyPage />} />
       </Routes>
-      <Footer />
     </>
   );
 }
