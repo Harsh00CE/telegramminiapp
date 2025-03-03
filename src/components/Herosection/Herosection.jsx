@@ -11,8 +11,14 @@ const Herosection = ({ username }) => {
     const [rotation, setRotation] = useState(0);
     const [scale, setScale] = useState(1);
 
-    useEffect(() => {
+
+    if (backButton.hide.isAvailable()) {
         backButton.hide();
+        backButton.isVisible();
+    }
+
+    useEffect(() => {
+
         document.addEventListener("gesturestart", (e) => e.preventDefault());
     }, []);
 
