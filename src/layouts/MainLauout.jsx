@@ -25,9 +25,7 @@ const MainLayout = () => {
 
     return (
         <div className="flex flex-col min-h-screen">
-
             <main className="flex-grow">
-                <Herosection username={username} />
                 <BackButton />
                 <Outlet />
                 <Footer />
