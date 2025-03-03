@@ -82,7 +82,7 @@ const Herosection = ({ username }) => {
                     <motion.span
                         key={effect.id}
                         className="absolute text-yellow-400 text-lg font-bold"
-                        initial={{ opacity: 1, y: 0, scale: 1 }}
+                        initial={{ opacity: 10, y: 0, scale: 1 }}
                         animate={{ opacity: 0, y: effect.y, scale: 3 }}
                         transition={{ duration: 0.6, ease: "easeOut" }}
                         style={{ left: `50%`, transform: `translate(-50%, 0) translate(${effect.x}px, 0)` }}
@@ -95,7 +95,6 @@ const Herosection = ({ username }) => {
 
             <p className="mt-2 text-yellow-400">TAPS LEFT: ⚡ {tapsLeft}</p>
 
-            {/* Progress Bar */}
             <div className="w-full max-w-sm bg-gray-700 rounded-full h-4 mt-2">
                 <div
                     className="bg-yellow-500 h-4 rounded-full"

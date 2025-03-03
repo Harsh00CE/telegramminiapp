@@ -7,6 +7,7 @@ import EnergyPage from "./Pages/EnergyPage/EnergyPage";
 import EnergyStakingPage from "./Pages/EnergyStakingPage/EnergyStakingPage";
 import { useTelegram } from "./Hooks/useTelegram";
 import Footer from "./components/Footer/Footer";
+import MainLayout from "./layouts/MainLauout";
 
 function App() {
   const [tg, setTg] = useState(null);
@@ -51,7 +52,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Herosection username={username} />} />
+        <Route path="/" element={<MainLayout />} />
+        {/* <Route path="/" element={<Herosection username={username} />} /> */}
         <Route path="/mybank" element={<Mybank />} />
         <Route path="/myteam" element={<Myteam />} />
         <Route path="/energystaking" element={<EnergyStakingPage />} />
