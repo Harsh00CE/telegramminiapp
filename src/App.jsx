@@ -52,12 +52,13 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<MainLayout />} />
+        <Route path="/" element={<Herosection />} />
         <Route path="/mybank" element={<Mybank />} />
         <Route path="/myteam" element={<Myteam />} />
         <Route path="/energystaking" element={<EnergyStakingPage />} />
         <Route path="/energy" element={<EnergyPage />} />
       </Routes>
+      <Footer />
     </>
   );
 }
