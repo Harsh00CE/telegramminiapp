@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Footer from "../Footer/Footer";
-import { usdt } from "../../assets/imgs";
+import { cryptocoin, usdt } from "../../assets/imgs";
 
 const Herosection = ({ username }) => {
     const [energy, setEnergy] = useState(81);
@@ -71,7 +71,7 @@ const Herosection = ({ username }) => {
 
             <div className="mt-6 p-10 relative flex justify-center items-center" onClick={handleTap}>
                 <motion.img
-                    src={usdt}
+                    src={cryptocoin}
                     alt="coin"
                     className="w-40 cursor-pointer select-none"
                     animate={{ rotate: rotation, scale: scale }}
