@@ -99,7 +99,6 @@ const Herosection = ({ username }) => {
                 ></div>
             </div>
 
-            <Footer />
         </div>
     );
 };
