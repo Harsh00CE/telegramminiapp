@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import BackButton from "../components/Backbtn/src_components_BackButton";
 import Footer from "../components/Footer/Footer";
+import Herosection from "../components/Herosection/Herosection";
+import { useTelegram } from "../Hooks/useTelegram";
 
 const MainLayout = () => {
+
+    const [tg, setTg] = useState(null);
+    const [username, setUsername] = useState("");
+    const { webApp } = useTelegram();
+
+    useEffect(() => {
+        if (window.Telegram?.WebApp) {
+            webApp.expand();
+            setTg(webApp);
+
+            console.log("WebApp initialized", webApp);
+
+            setUsername(webApp.initDataUnsafe?.user?.first_name || "User");
+        }
+    }, []);
+
+
     return (
         <div className="flex flex-col min-h-screen">
-            <header className="bg-gray-900 text-white p-4">Header Content</header>
+
             <main className="flex-grow">
+                <Herosection username={username} />
                 <BackButton />
                 <Outlet />
-                <Footer/>
+                <Footer />
             </main>
         </div>
     );

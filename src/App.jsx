@@ -53,14 +53,13 @@ function App() {
       className="bg-cover bg-center bg-no-repeat min-h-screen"
       style={{ backgroundImage: `url('${bg}')` }}>
       <Routes>
-
-        <Route path="/" element={<Herosection username={username} />} />
+        <Route path="/" element={<MainLayout />} />
         <Route path="/mybank" element={<Mybank />} />
         <Route path="/myteam" element={<Myteam />} />
         <Route path="/energystaking" element={<EnergyStakingPage />} />
         <Route path="/energy" element={<EnergyPage />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
