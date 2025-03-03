@@ -15,35 +15,30 @@ const Myteam = () => {
     const poolBonusReceived = 0;
 
     return (
-        <div className="bg-[#0d1b2a] text-white min-h-screen flex flex-col items-center justify-center font-bold">
+        <div className="text-white min-h-screen flex flex-col items-center justify-center font-bold">
             <div className="w-full max-w-md p-4">
-                {/* Header */}
                 <div className="flex items-center mb-6">
                     <span className="text-2xl mr-2">👥</span>
                     <h1 className="text-2xl">TEAM</h1>
                 </div>
 
-                {/* Total Section */}
                 <div className="bg-[#1d2025] rounded-lg p-4 mb-6">
                     <button className="w-full bg-yellow-500 text-black py-3 rounded-lg mb-4 hover:bg-yellow-400 transition-colors">
                         TOTAL
                     </button>
                     <div className="space-y-4">
-                        {/* Total Team Turnover */}
                         <div className="flex items-center justify-between bg-[#2d3a4b] p-3 rounded-lg">
                             <span className="text-yellow-500">💰</span>
                             <p className="text-sm">TOTAL TEAM TURNOVER</p>
                             <p className="text-lg">{totalTeamTurnover} USDT</p>
                         </div>
 
-                        {/* Total Team Members */}
                         <div className="flex items-center justify-between bg-[#2d3a4b] p-3 rounded-lg">
                             <span className="text-yellow-500">👥</span>
                             <p className="text-sm">TOTAL TEAM MEMBERS</p>
                             <p className="text-lg">{totalTeamMembers}</p>
                         </div>
 
-                        {/* Paid Members */}
                         <div className="flex items-center justify-between bg-[#2d3a4b] p-3 rounded-lg">
                             <span className="text-yellow-500">💸</span>
                             <p className="text-sm">PAID</p>
@@ -52,7 +47,6 @@ const Myteam = () => {
                     </div>
                 </div>
 
-                {/* Rank Progress */}
                 <div className="bg-[#1d2025] rounded-lg p-4 mb-6">
                     <div className="flex justify-between items-center mb-4">
                         <h2 className="text-xl">CURRENT RANK</h2>
@@ -77,7 +71,6 @@ const Myteam = () => {
                     </div>
                 </div>
 
-                {/* Linear Bonus */}
                 <div className="bg-[#1d2025] rounded-lg p-4 mb-6">
                     <div className="flex items-center mb-4">
                         <span className="text-yellow-500 text-2xl">✨</span>
@@ -92,7 +85,6 @@ const Myteam = () => {
                     </div>
                 </div>
 
-                {/* Energy Bonus */}
                 <div className="bg-[#1d2025] rounded-lg p-4 mb-6">
                     <div className="flex items-center mb-4">
                         <span className="text-yellow-500 text-2xl">⚡</span>
@@ -107,7 +99,6 @@ const Myteam = () => {
                     </div>
                 </div>
 
-                {/* Pool Bonus */}
                 <div className="bg-[#1d2025] rounded-lg p-4">
                     <div className="flex items-center mb-4">
                         <span className="text-yellow-500 text-2xl">✨</span>

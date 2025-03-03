@@ -14,7 +14,7 @@ const EnergyPage = () => {
   ];
 
   return (
-    <div className="bg-[#0d1b2a] text-white min-h-screen flex flex-col items-center justify-center font-bold">
+    <div className="text-white min-h-screen flex flex-col items-center justify-center font-bold">
       <div className="w-full max-w-md p-4">
         <div className="flex items-center mb-6">
           <span className="text-2xl mr-2">⚡</span>

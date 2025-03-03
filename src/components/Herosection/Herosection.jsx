@@ -45,7 +45,7 @@ const Herosection = ({ username }) => {
     };
 
     return (
-        <div className="bg-black text-white flex flex-col items-center p-4 no-zoom">
+        <div className="text-white flex flex-col items-center p-4 no-zoom">
             <div className="w-full flex justify-between items-center p-4 bg-gray-900 rounded-lg">
                 <span>Hello, {username}</span>
                 <div className="flex gap-2">
