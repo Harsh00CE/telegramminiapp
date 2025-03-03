@@ -6,38 +6,37 @@ import { usdt } from "../../assets/imgs";
 const Herosection = ({ username }) => {
     const [energy, setEnergy] = useState(81);
     const [tapsLeft, setTapsLeft] = useState(100);
+    const [autoClicker, setAutoClicker] = useState(false);
     const [tapEffects, setTapEffects] = useState([]);
     const [rotation, setRotation] = useState(0);
-    const [scale, setScale] = useState(1);
+    const [scale, setScale] = useState(1); 
 
     useEffect(() => {
+        
         document.addEventListener("gesturestart", (e) => e.preventDefault());
     }, []);
 
-    const handleTap = (event) => {
-        const tapCount = event.touches ? event.touches.length : 1; // Count fingers
+    const handleTap = () => {
+        if (tapsLeft > 0) {
+            setEnergy(energy + 1);
+            setTapsLeft(tapsLeft - 1);
 
-        if (tapsLeft >= tapCount) {
-            setEnergy((prev) => prev + tapCount); // Increase energy instantly
-            setTapsLeft((prev) => prev - tapCount); // Reduce tapsLeft accurately
+            setRotation((prev) => prev + 360); 
+            setScale(1.2);
 
-            setRotation((prev) => prev + 360 * tapCount); // Faster spin effect
-            setScale(1.3);
-            setTimeout(() => setScale(1), 100); // Reduced scale reset delay
+            setTimeout(() => setScale(1), 200);
 
-            const newEffects = Array.from({ length: tapCount }, (_, i) => ({
-                id: Date.now() + i,
+           const newEffect = {
+                id: Date.now(),
                 x: Math.random() * 80 - 40,
                 y: Math.random() * -50 - 10,
-            }));
+            };
 
-            setTapEffects((prev) => [...prev, ...newEffects]);
+            setTapEffects([...tapEffects, newEffect]);
 
             setTimeout(() => {
-                setTapEffects((prev) =>
-                    prev.filter((effect) => !newEffects.some((e) => e.id === effect.id))
-                );
-            }, 400); // Faster fade-out
+                setTapEffects((prev) => prev.filter((effect) => effect.id !== newEffect.id));
+            }, 600);
         }
     };
 
@@ -56,16 +55,23 @@ const Herosection = ({ username }) => {
                 <h1 className="text-4xl font-bold">{energy}</h1>
             </div>
 
-            <div className="mt-6 p-10 relative flex justify-center items-center"
-                onTouchStart={handleTap} // Detect multiple taps per second
-                onMouseDown={handleTap} // Works for fast desktop clicks
-            >
+            <div className="flex justify-between w-full max-w-sm mt-4">
+                <button
+                    onClick={() => setAutoClicker(!autoClicker)}
+                    className="bg-gray-700 px-4 py-2 rounded"
+                >
+                    Autoclicker: {autoClicker ? "ON" : "OFF"}
+                </button>
+                <button className="bg-yellow-500 text-black px-4 py-2 rounded">🏆 Leaderboard</button>
+            </div>
+
+            <div className="mt-6 p-10 relative flex justify-center items-center" onClick={handleTap}>
                 <motion.img
                     src={usdt}
                     alt="coin"
                     className="w-40 cursor-pointer select-none"
                     animate={{ rotate: rotation, scale: scale }}
-                    transition={{ duration: 0.1, ease: "easeInOut" }} // Faster response
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
                 />
 
                 {tapEffects.map((effect) => (
@@ -73,17 +79,19 @@ const Herosection = ({ username }) => {
                         key={effect.id}
                         className="absolute text-yellow-400 text-lg font-bold"
                         initial={{ opacity: 1, y: 0, scale: 1 }}
-                        animate={{ opacity: 0, y: effect.y, scale: 2 }}
-                        transition={{ duration: 0.4, ease: "easeOut" }} // Reduced fade-out time
+                        animate={{ opacity: 0, y: effect.y, scale: 3 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
                         style={{ left: `50%`, transform: `translate(-50%, 0) translate(${effect.x}px, 0)` }}
                     >
-                        ⚡
+                        {/* {Math.random() > 0.5 ? "+1" : "⚡"} */}
+                        {"⚡"}
                     </motion.span>
                 ))}
             </div>
 
             <p className="mt-2 text-yellow-400">TAPS LEFT: ⚡ {tapsLeft}</p>
 
+            {/* Progress Bar */}
             <div className="w-full max-w-sm bg-gray-700 rounded-full h-4 mt-2">
                 <div
                     className="bg-yellow-500 h-4 rounded-full"
