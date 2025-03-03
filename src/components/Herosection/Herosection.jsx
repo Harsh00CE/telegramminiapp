@@ -12,7 +12,7 @@ const Herosection = ({ username }) => {
     const [scale, setScale] = useState(1);
 
     useEffect(() => {
-        backButton.isVisible();
+        backButton.hide();
         document.addEventListener("gesturestart", (e) => e.preventDefault());
     }, []);
 
