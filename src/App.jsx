@@ -15,8 +15,6 @@ function App() {
   const [username, setUsername] = useState("");
   const { webApp } = useTelegram();
   const navigate = useNavigate();
-  // const webApp = window.Telegram.WebApp;
-
   useEffect(() => {
     if (window.Telegram?.WebApp) {
       webApp.expand();
@@ -53,7 +51,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Herosection username={username} />} />
+        
+        <Route path="/" element={<Herosection />} />
         <Route path="/mybank" element={<Mybank />} />
         <Route path="/myteam" element={<Myteam />} />
         <Route path="/energystaking" element={<EnergyStakingPage />} />
