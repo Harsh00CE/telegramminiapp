@@ -24,7 +24,7 @@ const Herosection = ({ username }) => {
             setRotation((prev) => prev + 360); 
             setScale(1.2);
 
-            setTimeout(() => setScale(1), 200);
+            setTimeout(() => setScale(1), 100);
 
            const newEffect = {
                 id: Date.now(),
@@ -36,7 +36,7 @@ const Herosection = ({ username }) => {
 
             setTimeout(() => {
                 setTapEffects((prev) => prev.filter((effect) => effect.id !== newEffect.id));
-            }, 600);
+            }, 400);
         }
     };
 
