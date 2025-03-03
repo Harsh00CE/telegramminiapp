@@ -24,7 +24,7 @@ const MainLayout = () => {
 
 
     return (
-        <div className="flex flex-col min-h-screen">
+        <div>
             <main className="flex-grow">
                 <BackButton />
                 <Outlet />

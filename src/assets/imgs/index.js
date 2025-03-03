@@ -10,6 +10,7 @@ import my_team from "./MY_TEAM.png"
 import referral_link from "./REFERRAL_LINK.png"
 import today_energy from "./TODAY_ENERGY_BALANCE.png"
 import upgrade from "./UPGRADE.png"
+import ball from "./ball.gif"
 import get_energy from "./GET_ENERGY.png"
 
-export { usdt, cryptocoin, bg, auto_click, autumn_promo, btn, leader_board, my_bank, my_team, referral_link, today_energy, upgrade, get_energy };
+export { usdt, cryptocoin, bg, auto_click, autumn_promo, btn, leader_board, my_bank, my_team, referral_link, today_energy, upgrade, get_energy , ball};
