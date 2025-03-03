@@ -32,8 +32,8 @@ const Herosection = ({ username }) => {
 
            const newEffect = {
                 id: Date.now(),
-                x: x,
-                y: y,
+                x: Math.random() * 100 - 40,
+                y: Math.random() * -100 - 10,
             };
 
             setTapEffects([...tapEffects, newEffect]);
