@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Footer from "../Footer/Footer";
 import { cryptocoin, usdt } from "../../assets/imgs";
+import { backButton } from "@telegram-apps/sdk-react";
 
 const Herosection = ({ username }) => {
     const [energy, setEnergy] = useState(81);
@@ -12,7 +12,7 @@ const Herosection = ({ username }) => {
     const [scale, setScale] = useState(1);
 
     useEffect(() => {
-
+        backButton.isVisible();
         document.addEventListener("gesturestart", (e) => e.preventDefault());
     }, []);
 
