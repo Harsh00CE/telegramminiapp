@@ -53,7 +53,6 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<MainLayout />} />
-        {/* <Route path="/" element={<Herosection username={username} />} /> */}
         <Route path="/mybank" element={<Mybank />} />
         <Route path="/myteam" element={<Myteam />} />
         <Route path="/energystaking" element={<EnergyStakingPage />} />
