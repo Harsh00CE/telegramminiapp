@@ -1,7 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import BackButton from "../components/Backbtn/src_components_BackButton";
-import Herosection from "../components/Herosection/Herosection";
 import Footer from "../components/Footer/Footer";
 
 const MainLayout = () => {
