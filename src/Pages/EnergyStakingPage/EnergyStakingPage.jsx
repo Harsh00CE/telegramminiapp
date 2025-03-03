@@ -2,11 +2,11 @@ import React from "react";
 import { ball } from "../../assets/imgs";
 
 const EnergyStakingPage = () => {
-    
+
     const energyToday = 341;
-    const btnBalance = 0.0101; 
-    const usdBalance = 0; 
-    const stakingRate = "0.0001 BTN"; 
+    const btnBalance = 0.0101;
+    const usdBalance = 0;
+    const stakingRate = "0.0001 BTN";
 
     return (
         <div className="text-white min-h-screen flex flex-col items-center justify-center font-bold">
@@ -19,7 +19,7 @@ const EnergyStakingPage = () => {
                 <div className="flex justify-center mb-6">
                     <div className="relative w-80 h-80 rounded-full bg-gradient-to-br from-[#1d2025] to-[#2d3a4b] flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0 bg-cover bg-center opacity-50">
-                            <img src={ball} alt=""/>
+                            <img src={ball} alt="" />
                         </div>
                         <div className="relative z-10 text-center">
                             <p className="text-lg">YOUR ENERGY TODAY</p>

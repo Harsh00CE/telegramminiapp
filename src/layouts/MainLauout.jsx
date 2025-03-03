@@ -25,7 +25,7 @@ const MainLayout = () => {
 
     return (
         <div>
-            <main className="flex-grow">
+            <main>
                 <BackButton />
                 <Outlet />
                 <Footer />
