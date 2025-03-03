@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { cryptocoin, usdt } from "../../assets/imgs";
-import { backButton } from "@telegram-apps/sdk-react";
+import Footer from "../Footer/Footer";
+import { cryptocoin, leader_board, usdt } from "../../assets/imgs";
 
 const Herosection = ({ username }) => {
     const [energy, setEnergy] = useState(81);
@@ -11,14 +11,7 @@ const Herosection = ({ username }) => {
     const [rotation, setRotation] = useState(0);
     const [scale, setScale] = useState(1);
 
-
-    if (backButton.hide.isAvailable()) {
-        backButton.show();
-        backButton.isVisible();
-    }
-
     useEffect(() => {
-
         document.addEventListener("gesturestart", (e) => e.preventDefault());
     }, []);
 
@@ -27,6 +20,7 @@ const Herosection = ({ username }) => {
         const rect = tap.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
+
         if (tapsLeft > 0) {
             setEnergy(energy + 1);
             setTapsLeft(tapsLeft - 1);
@@ -47,6 +41,10 @@ const Herosection = ({ username }) => {
             setTimeout(() => {
                 setTapEffects((prev) => prev.filter((effect) => effect.id !== newEffect.id));
             }, 600);
+
+            if ("vibrate" in navigator) {
+                navigator.vibrate(200);
+            }
         }
     };
 
@@ -60,7 +58,7 @@ const Herosection = ({ username }) => {
                 </div>
             </div>
 
-            <div className="mt-4 bg-gray-800 bg-opacity-0 p-4 text-center rounded-lg w-full max-w-sm">
+            <div className="mt-4 bg-gray-800 p-4 text-center rounded-lg w-full max-w-sm">
                 <p className="text-yellow-500">TODAY ENERGY BALANCE</p>
                 <h1 className="text-4xl font-bold">{energy}</h1>
             </div>
@@ -72,7 +70,14 @@ const Herosection = ({ username }) => {
                 >
                     Autoclicker: {autoClicker ? "ON" : "OFF"}
                 </button>
-                <button className="bg-yellow-500 text-black px-4 py-2 rounded">🏆 Leaderboard</button>
+                <button className="text-white px-4 py-2 rounded-lg hover:bg-yellow-400 transition-colors">
+                    <div className="flex items-center space-x-2 text-lg">
+                        Leaderboard
+                    </div>
+                    <div className="flex items-center space-x-2 item-right">
+                        <img src={leader_board} width={40} alt="" />
+                    </div>
+                </button>
             </div>
 
             <div className="mt-6 p-10 relative flex justify-center items-center" onClick={handleTap}>
@@ -93,7 +98,6 @@ const Herosection = ({ username }) => {
                         transition={{ duration: 0.6, ease: "easeOut" }}
                         style={{ left: `50%`, transform: `translate(-50%, 0) translate(${effect.x}px, 0)` }}
                     >
-                        {/* {Math.random() > 0.5 ? "+1" : "⚡"} */}
                         {"⚡"}
                     </motion.span>
                 ))}
@@ -110,7 +114,6 @@ const Herosection = ({ username }) => {
                 </div>
             </div>
 
-
             <p className="mt-2 text-yellow-400">TAPS LEFT: ⚡ {tapsLeft}</p>
 
             <div className="w-full max-w-sm bg-gray-700 rounded-full h-4 mt-2">
@@ -119,7 +122,6 @@ const Herosection = ({ username }) => {
                     style={{ width: `${(tapsLeft / 100) * 100}%` }}
                 ></div>
             </div>
-
         </div>
     );
 };
