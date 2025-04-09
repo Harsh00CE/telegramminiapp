@@ -47,7 +47,7 @@ const Herosection = ({ username }) => {
     const toggleAutoclicker = () => {
         setAutoClicker(!autoClicker);
         if (!autoClicker) {
-            setShowAutoclickerInfo(true); // Show info when turning ON for the first time
+            setShowAutoclickerInfo(true); 
         }
     };
 
@@ -56,7 +56,7 @@ const Herosection = ({ username }) => {
     };
 
     return (
-        <div className="text-white flex flex-col items-center p-4 no-zoom relative">
+        <div className="text-white flex flex-col items-center p-4 no-zoom relative overflow-y-scroll overflow-x-hidden">
             <div className="w-full flex justify-between items-center p-4 bg-gray-900 rounded-lg">
                 <span>Hello, {username}</span>
                 <div className="flex gap-2">
@@ -71,7 +71,7 @@ const Herosection = ({ username }) => {
             </div>
 
 
-            <div className="p-6 m-6 bg-gray-800 rounded-lg" style={{ background: 'rgba(29, 32, 37, 0.8)' }}>
+            <div className="p-6 m-6 bg-gray-800 rounded-lg w-full" style={{ background: 'rgba(29, 32, 37, 0.8)' }}>
 
 
                 <div className="flex justify-between w-full max-w-sm mt-4">
@@ -113,7 +113,7 @@ const Herosection = ({ username }) => {
                     </div>
                 </div>
 
-                <div className="mt-6 p-10 relative flex justify-center items-center" onClick={handleTap}>
+                <div className="mt-6 p-5 relative flex justify-center items-center" onClick={handleTap}>
                     <motion.img
                         src={cryptocoin}
                         alt="coin"
@@ -156,7 +156,6 @@ const Herosection = ({ username }) => {
                 </div>
             </div>
 
-            {/* Autoclicker Info Modal */}
             {showAutoclickerInfo && (
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
