@@ -1,14 +1,15 @@
 import React from "react";
+import Footer from "../../components/Footer/Footer";
 
 const Myteam = () => {
     // Sample data from the screenshot (you can make these dynamic or fetch from an API)
-    const totalTeamTurnover = 0; // USDT
+    const totalTeamTurnover = 0;
     const totalTeamMembers = 0;
     const paidMembers = 0;
     const currentRankBonus = "0%";
     const nextRankBonus = "8%";
     const nextRankProgress = "0 USD / 0 USD";
-    const affiliateIncome = 0; // USDT
+    const affiliateIncome = 0;
     const energyBonusYesterday = 0;
     const weeklyTeamTurnover = 0;
     const poolBonusTier = "-";

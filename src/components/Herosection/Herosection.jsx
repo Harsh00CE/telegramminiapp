@@ -115,7 +115,7 @@ const Herosection = ({ username }) => {
 
                 <div className="mt-6 p-5 relative flex justify-center items-center" onClick={handleTap}>
                     <motion.img
-                        src={cryptocoin}
+                        src={usdt}
                         alt="coin"
                         className="w-40 cursor-pointer select-none"
                         animate={{ rotate: rotation, scale: scale }}
