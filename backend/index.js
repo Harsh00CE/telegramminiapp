@@ -10,7 +10,8 @@ function getMainMenu() {
         [
             Markup.button.webApp(
                 "🚀 Start",
-                "https://telegramminiapp-six.vercel.app/"
+                // "https://telegramminiapp-six.vercel.app/"
+                "https://telegramminiapp-lyart.vercel.app/"
             )
         ],
         [
