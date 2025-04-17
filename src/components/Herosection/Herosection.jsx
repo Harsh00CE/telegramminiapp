@@ -22,7 +22,7 @@ const Herosection = ({ username }) => {
             tg.ready();
             tg.expand();
             console.log(window.Telegram?.WebApp?.version);
-            
+
             if (typeof tg.showCloseButton === "function") {
                 tg.showCloseButton();
             } else {
@@ -87,13 +87,10 @@ const Herosection = ({ username }) => {
             </div>
 
 
-            <div className="p-4 m-3 bg-gray-800 rounded-lg w-full" style={{ background: 'rgba(29, 32, 37, 0.8)' }}>
-
-
+            <div className="p-4 m-3 bg-gray-800 rounded-lg w-full overflow-hidden" style={{ background: 'rgba(29, 32, 37, 0.8)' }}>
                 <div className="flex justify-between w-full">
                     <div className="relative">
-                        <div className="flex items-center space-x-2"
-                        >
+                        <div className="flex items-center space-x-2">
                             <span className="text-white text-sm">AUTOCICKER</span>
                             <button
                                 onClick={() => setShowAutoclickerInfo(true)}
@@ -169,6 +166,7 @@ const Herosection = ({ username }) => {
                     ></div>
                 </div>
             </div>
+
 
             {showAutoclickerInfo && (
                 <motion.div
