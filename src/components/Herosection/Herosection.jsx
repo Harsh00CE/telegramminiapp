@@ -182,7 +182,6 @@ const Herosection = ({ username }) => {
                             Autoclicker is a bot that collects energy and BitMEM for you in exchange for taps. The bot’s commission is 15%. Enable it every 24 hours to keep it running. Available higher from NFT Premium and higher.
                         </p>
                         <div className="flex items-center space-x-2 mt-2">
-                            <span className="text-yellow-500 text-xs">ℹ️</span>
                             <button
                                 onClick={closeAutoclickerInfo}
                                 className="bg-yellow-500 text-black px-3 py-1 rounded text-xs hover:bg-yellow-400 transition-colors"
