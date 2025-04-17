@@ -1,5 +1,6 @@
 import React from "react";
 import BackButton from "../../components/Backbtn/src_components_BackButton";
+import { TonConnectButton } from "@tonconnect/ui-react";
 
 const EnergyPage = () => {
   const airdrops = [
@@ -15,18 +16,9 @@ const EnergyPage = () => {
   ];
 
   const handleAddWallet = () => {
-    if (window.Telegram && window.Telegram.WebApp) {
-      const tg = window.Telegram.WebApp;
-      tg.MainButton.text = "Connecting to Wallet...";
-      tg.MainButton.show();
+    
 
-      // Prompting user to connect their wallet using Telegram WebApp
-      tg.onEvent("mainButtonClicked", () => {
-        // You can initiate wallet connection here using Telegram WebApp API
-        // or provide instructions for connecting via Telegram's wallet system.
-        alert("Telegram wallet connection initiated.");
-      });
-    }
+
   };
 
   return (
@@ -44,6 +36,7 @@ const EnergyPage = () => {
             onClick={handleAddWallet}
             className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-400 transition-colors"
           >
+            <TonConnectButton/>
             ADD YOUR WALLET
           </button>
         </div>

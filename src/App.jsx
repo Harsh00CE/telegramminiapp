@@ -10,6 +10,7 @@ import Footer from "./components/Footer/Footer";
 import MainLayout from "./layouts/MainLauout";
 import { bg } from "./assets/imgs";
 import NewHerosection from "./components/Herosection/NewHerosection";
+import { TonConnectUIProvider } from "@tonconnect/ui-react";
 
 function App() {
   const [tg, setTg] = useState(null);
@@ -53,13 +54,15 @@ function App() {
           backgroundImage: `url('${bg}')`,
         }}
       >
-        <Routes>
-          <Route path="/" element={<Herosection username={username} />} />
-          <Route path="/mybank" element={<Mybank />} />
-          <Route path="/myteam" element={<Myteam />} />
-          <Route path="/energystaking" element={<EnergyStakingPage />} />
-          <Route path="/energy" element={<EnergyPage />} />
-        </Routes>
+        <TonConnectUIProvider manifestUrl="">
+          <Routes>
+            <Route path="/" element={<Herosection username={username} />} />
+            <Route path="/mybank" element={<Mybank />} />
+            <Route path="/myteam" element={<Myteam />} />
+            <Route path="/energystaking" element={<EnergyStakingPage />} />
+            <Route path="/energy" element={<EnergyPage />} />
+          </Routes>
+        </TonConnectUIProvider>
       </div>
 
       {/* Sticky Footer */}
