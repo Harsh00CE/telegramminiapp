@@ -11,6 +11,33 @@ import MainLayout from "./layouts/MainLauout";
 import { bg } from "./assets/imgs";
 import NewHerosection from "./components/Herosection/NewHerosection";
 import { TonConnectUIProvider } from "@tonconnect/ui-react";
+import '@rainbow-me/rainbowkit/styles.css';
+import {
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { WagmiProvider } from 'wagmi';
+import {
+  mainnet,
+  polygon,
+  optimism,
+  arbitrum,
+  base,
+} from 'wagmi/chains';
+import {
+  QueryClientProvider,
+  QueryClient,
+} from "@tanstack/react-query";
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+
+
+const config = getDefaultConfig({
+  appName: 'My RainbowKit App',
+  projectId: 'YOUR_PROJECT_ID',
+  chains: [mainnet, polygon, optimism, arbitrum, base],
+  ssr: true,
+});
+
+const queryClient = new QueryClient();
 
 function App() {
   const [tg, setTg] = useState(null);
@@ -54,15 +81,21 @@ function App() {
           backgroundImage: `url('${bg}')`,
         }}
       >
-        <TonConnectUIProvider manifestUrl="https://raw.githubusercontent.com/Harsh00CE/telegramminiapp/refs/heads/master/ton.json">
-          <Routes>
-            <Route path="/" element={<Herosection username={username} />} />
-            <Route path="/mybank" element={<Mybank />} />
-            <Route path="/myteam" element={<Myteam />} />
-            <Route path="/energystaking" element={<EnergyStakingPage />} />
-            <Route path="/energy" element={<EnergyPage />} />
-          </Routes>
-        </TonConnectUIProvider>
+        {/* <TonConnectUIProvider manifestUrl="https://raw.githubusercontent.com/Harsh00CE/telegramminiapp/refs/heads/master/ton.json"> */}
+        <WagmiProvider config={config}>
+          <QueryClientProvider client={queryClient}>
+            <RainbowKitProvider>
+              <Routes>
+                <Route path="/" element={<Herosection username={username} />} />
+                <Route path="/mybank" element={<Mybank />} />
+                <Route path="/myteam" element={<Myteam />} />
+                <Route path="/energystaking" element={<EnergyStakingPage />} />
+                <Route path="/energy" element={<EnergyPage />} />
+              </Routes>
+            </RainbowKitProvider>
+          </QueryClientProvider>
+        </WagmiProvider>
+        {/* </TonConnectUIProvider> */}
       </div>
 
       {/* Sticky Footer */}

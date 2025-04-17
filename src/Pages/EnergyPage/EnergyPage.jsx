@@ -1,6 +1,7 @@
 import React from "react";
 import BackButton from "../../components/Backbtn/src_components_BackButton";
 import { TonConnectButton } from "@tonconnect/ui-react";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const EnergyPage = () => {
   const airdrops = [
@@ -27,8 +28,9 @@ const EnergyPage = () => {
         <div className="mb-6">
           <p className="text-sm flex justify-center items-center text-white mb-2">WALLET FOR AIRDROPS</p>
           <div className="w-full flex justify-center items-center">
-            <TonConnectButton />
-          </div>
+            {/* <TonConnectButton /> */}
+            <ConnectButton/>
+          </div>  
         </div>
 
 
