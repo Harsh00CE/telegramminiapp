@@ -16,55 +16,57 @@ function App() {
   const [username, setUsername] = useState("");
   const { webApp } = useTelegram();
   const navigate = useNavigate();
+
   useEffect(() => {
     if (window.Telegram?.WebApp) {
       webApp.expand();
       setTg(webApp);
-
       console.log("WebApp initialized", webApp);
-
       setUsername(webApp.initDataUnsafe?.user?.first_name || "User");
     }
   }, []);
 
-
-
   const onBackClick = useCallback(() => {
-    navigate(-1)
-  }, [navigate])
+    navigate(-1);
+  }, [navigate]);
 
   const onMainClick = useCallback(() => {
-    webApp.showAlert("Main button click")
-  }, [webApp])
+    webApp.showAlert("Main button click");
+  }, [webApp]);
 
   useEffect(() => {
-    webApp.ready()
-    webApp.BackButton.onClick(onBackClick)
-    webApp.MainButton.onClick(onMainClick)
+    webApp.ready();
+    webApp.BackButton.onClick(onBackClick);
+    webApp.MainButton.onClick(onMainClick);
     return () => {
-      webApp.BackButton.offClick(onBackClick)
-      webApp.MainButton.offClick(onMainClick)
+      webApp.BackButton.offClick(onBackClick);
+      webApp.MainButton.offClick(onMainClick);
     };
-  }, [webApp])
-
-
+  }, [webApp]);
 
   return (
-    <div
-      className="bg-cover bg-center bg-no-repeat min-h-screen"
-      style={{ backgroundImage: `url('${bg}')`, background: "cover", contain: "content" }}>
-      <Routes>
-        <Route path="/" element={<Herosection username={username} />} />
-        {/* <Route path="/" element={<NewHerosection />} /> */}
-        <Route path="/mybank" element={<Mybank />} />
-        <Route path="/myteam" element={<Myteam />} />
-        <Route path="/energystaking" element={<EnergyStakingPage />} />
-        <Route path="/energy" element={<EnergyPage />} />
-      </Routes>
+    <div className="flex flex-col min-h-screen bg-[#0f1115] relative">
+      {/* Main Scrollable Area */}
+      <div
+        className="flex-1 overflow-y-auto pb-20 bg-cover bg-center"
+        style={{
+          backgroundImage: `url('${bg}')`,
+        }}
+      >
+        <Routes>
+          <Route path="/" element={<Herosection username={username} />} />
+          <Route path="/mybank" element={<Mybank />} />
+          <Route path="/myteam" element={<Myteam />} />
+          <Route path="/energystaking" element={<EnergyStakingPage />} />
+          <Route path="/energy" element={<EnergyPage />} />
+        </Routes>
+      </div>
+
+      {/* Sticky Footer */}
       <Footer />
-      <MainLayout />
     </div>
   );
 }
+
 
 export default App;

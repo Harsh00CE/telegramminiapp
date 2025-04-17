@@ -5,7 +5,7 @@ const Footer = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 flex justify-between items-center px-4 py-2 bg-[#1d2025]/90 border-t border-gray-700 z-50 text-amber-100">
+        <div className="fixed bottom-0 left-0 right-0 z-50 flex justify-between items-center px-4 py-2 bg-[#1d2025]/90 border-t border-gray-700 z-50 text-amber-100">
             {/* Left Side */}
             <button onClick={() => navigate("/mybank")} className="flex flex-col items-center">
                 <span className="text-xl">🏦</span>
