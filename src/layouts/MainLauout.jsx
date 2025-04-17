@@ -26,9 +26,8 @@ const MainLayout = () => {
     return (
         <div>
             <main>
-                <BackButton />
                 <Outlet /> 
-                {/* <Footer /> */}
+                <Footer />
             </main>
         </div>
     );

@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "../../components/Footer/Footer";
+import BackButton from "../../components/Backbtn/src_components_BackButton";
 
 const Myteam = () => {
     // Sample data from the screenshot (you can make these dynamic or fetch from an API)
@@ -17,6 +18,9 @@ const Myteam = () => {
 
     return (
         <div className="text-white min-h-screen flex flex-col items-center justify-center font-bold">
+            
+            <BackButton />
+            
             <div className="w-full max-w-md p-4">
                 <div className="flex items-center mb-6">
                     <span className="text-2xl mr-2">👥</span>

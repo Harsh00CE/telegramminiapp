@@ -1,5 +1,6 @@
 import React from "react";
 import { ball } from "../../assets/imgs";
+import BackButton from "../../components/Backbtn/src_components_BackButton";
 
 const EnergyStakingPage = () => {
 
@@ -10,6 +11,8 @@ const EnergyStakingPage = () => {
 
     return (
         <div className="text-white min-h-screen flex flex-col items-center justify-center font-bold">
+            
+            <BackButton />
             <div className="w-full max-w-md p-4">
                 <div className="flex items-center mb-6">
                     <span className="text-2xl mr-2">⚡</span>
