@@ -207,7 +207,7 @@ const NewHerosection = () => {
                 onClick={handleCardClick}
               >
                 <div className="w-full h-full rounded-full circle-inner">
-                  <img src={cryptocoin} alt="Main Character" className="w-full h-full" />
+                  <img src={usdt} alt="Main Character" className="w-full h-full" />
                 </div>
               </div>
             </div>

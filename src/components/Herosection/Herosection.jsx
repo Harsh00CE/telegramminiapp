@@ -126,8 +126,8 @@ const Herosection = ({ username }) => {
                         <motion.span
                             key={effect.id}
                             className="absolute text-yellow-400 text-lg font-bold"
-                            initial={{ opacity: 100, y: 0, scale: 1 }}
-                            animate={{ opacity: 0, y: effect.y, scale: 3 }}
+                            initial={{ y: 0, scale: 1 }}
+                            animate={{ y: effect.y, scale: 3 }}
                             transition={{ duration: 0.6, ease: "easeOut" }}
                             style={{ left: `50%`, transform: `translate(-50%, 0) translate(${effect.x}px, 0)` }}
                         >
