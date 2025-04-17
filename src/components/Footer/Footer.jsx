@@ -5,25 +5,36 @@ const Footer = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 flex justify-around py-2 border-t border-gray-700 text-white"
-            style={{ background: 'rgba(29, 32, 37, 0.8)' }}>
+        <div
+            className="fixed bottom-0 left-0 right-0 flex justify-around py-2 border-t border-gray-700 text-white"
+            style={{ background: 'rgba(29, 32, 37, 0.8)' }}
+        >
             <button onClick={() => navigate("/mybank")} className="flex flex-col items-center">
                 <span className="text-2xl">🏦</span>
                 <p>MY BANK</p>
             </button>
+
+
             <button onClick={() => navigate("/myteam")} className="flex flex-col items-center">
                 <span className="text-2xl">👥</span>
                 <p>MY TEAM</p>
             </button>
+          
+            <button onClick={() => navigate("/home")} className="flex flex-col items-center border-2 border-gray-700 rounded-full bg-yellow-500 text-black">
+                <span className="text-2xl">🏠</span>
+                {/* <p>HOME</p> */}
+            </button>
+
             <button onClick={() => navigate("/energystaking")} className="flex flex-col items-center">
                 <span className="text-2xl">⚡</span>
                 <p>BTM</p>
             </button>
+
             <button onClick={() => navigate("/energy")} className="flex flex-col items-center">
                 <span className="text-2xl">💪</span>
                 <p>GET ENERGY</p>
             </button>
-        </div >
+        </div>
     );
 };
 
