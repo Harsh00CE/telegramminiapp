@@ -11,7 +11,7 @@ const MyBank = () => {
 
   return (
     <div className="text-white min-h-screen flex flex-col items-center justify-center font-bold">
-      
+
       <BackButton />
       <div className="w-full max-w-md p-4">
         <div className="flex items-center mb-6">

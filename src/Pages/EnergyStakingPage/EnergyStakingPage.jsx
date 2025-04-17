@@ -48,7 +48,6 @@ const EnergyStakingPage = () => {
                 </div>
             </div>
 
-            <Footer />
         </div>
     );
 };
