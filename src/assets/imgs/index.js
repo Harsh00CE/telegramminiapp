@@ -1,5 +1,5 @@
 import usdt from "./USDT.png";
-import cryptocoin from "./cryptocoin.jpeg";
+import cryptocoin from "./cryptocoin.png";
 import bg from "./bg.gif"
 import auto_click from "./AUTO_CLICKER.png"
 import autumn_promo from "./AUTUMN_PROMOTION.png"
