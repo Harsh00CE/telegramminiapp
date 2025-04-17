@@ -12,11 +12,24 @@ const Herosection = ({ username }) => {
     const [scale, setScale] = useState(1);
     const [showAutoclickerInfo, setShowAutoclickerInfo] = useState(false);
 
-    Telegram.WebApp.showCloseButton();
-
-
     useEffect(() => {
         document.addEventListener("gesturestart", (e) => e.preventDefault());
+    }, []);
+
+    useEffect(() => {
+        if (window.Telegram && window.Telegram.WebApp) {
+            const tg = window.Telegram.WebApp;
+            tg.ready();
+            tg.expand();
+            console.log(window.Telegram?.WebApp?.version); // Check the WebApp version
+
+            // Safe check for showCloseButton
+            if (typeof tg.showCloseButton === "function") {
+                tg.showCloseButton();
+            } else {
+                console.warn("showCloseButton is not supported in this environment.");
+            }
+        }
     }, []);
 
 
