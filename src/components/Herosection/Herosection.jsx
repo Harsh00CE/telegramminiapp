@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import Footer from "../Footer/Footer";
-import { autumn_promo, btn, cryptocoin, leader_board, usdt } from "../../assets/imgs";
+import { autumn_promo, btn, cryptocoin, leader_board } from "../../assets/imgs";
 
 const Herosection = ({ username }) => {
     const [energy, setEnergy] = useState(81);
@@ -11,11 +10,28 @@ const Herosection = ({ username }) => {
     const [rotation, setRotation] = useState(0);
     const [scale, setScale] = useState(1);
     const [showAutoclickerInfo, setShowAutoclickerInfo] = useState(false);
+    const tapSectionRef = useRef(null);
+    const coinRef = useRef(null);
 
+    // Prevent zoom gestures and handle touch events
     useEffect(() => {
-        document.addEventListener("gesturestart", (e) => e.preventDefault());
+        const preventDefault = (e) => e.preventDefault();
+        document.addEventListener("gesturestart", preventDefault);
+
+        const tapSection = tapSectionRef.current;
+        if (tapSection) {
+            tapSection.addEventListener('touchmove', preventDefault, { passive: false });
+        }
+
+        return () => {
+            document.removeEventListener("gesturestart", preventDefault);
+            if (tapSection) {
+                tapSection.removeEventListener('touchmove', preventDefault);
+            }
+        };
     }, []);
 
+    // Initialize Telegram WebApp
     useEffect(() => {
         if (window.Telegram && window.Telegram.WebApp) {
             const tg = window.Telegram.WebApp;
@@ -31,33 +47,34 @@ const Herosection = ({ username }) => {
         }
     }, []);
 
-
     const handleTap = (e) => {
+        e.preventDefault();
+
+        if (tapsLeft <= 0) return;
+
         const tap = e.currentTarget;
         const rect = tap.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
-        if (tapsLeft > 0) {
-            setEnergy(energy + 1);
-            setTapsLeft(tapsLeft - 1);
 
-            setRotation((prev) => prev + 360);
-            setScale(1.2);
+        setEnergy(energy + 1);
+        setTapsLeft(tapsLeft - 1);
 
-            setTimeout(() => setScale(1), 200);
+        setRotation((prev) => prev + 360);
+        setScale(1.2);
+        setTimeout(() => setScale(1), 200);
 
-            const newEffect = {
-                id: Date.now(),
-                x: Math.random() * 100 - 40,
-                y: Math.random() * -100 - 10,
-            };
+        const newEffect = {
+            id: Date.now(),
+            x: Math.random() * 100 - 40,
+            y: Math.random() * -100 - 10,
+        };
 
-            setTapEffects([...tapEffects, newEffect]);
+        setTapEffects([...tapEffects, newEffect]);
 
-            setTimeout(() => {
-                setTapEffects((prev) => prev.filter((effect) => effect.id !== newEffect.id));
-            }, 600);
-        }
+        setTimeout(() => {
+            setTapEffects((prev) => prev.filter((effect) => effect.id !== newEffect.id));
+        }, 600);
     };
 
     const toggleAutoclicker = () => {
@@ -72,29 +89,40 @@ const Herosection = ({ username }) => {
     };
 
     return (
-        <div className="text-white flex flex-col items-center p-4 no-zoom relative overflow-y-scroll overflow-x-hidden">
-            <div className="w-full flex justify-between items-center p-3 bg-gray-900 rounded-lg">
-                <span>Hello , {username}</span>
+        <div className="text-white flex flex-col items-center p-4 no-zoom relative overflow-y-auto overflow-x-hidden min-h-screen">
+            {/* Header Section */}
+            <div className="w-full flex justify-between items-center p-3 bg-gray-900 rounded-lg sticky top-0 z-10">
+                <span>Hello, {username}</span>
                 <div className="flex gap-2">
-                    <button className="bg-yellow-500 text-black px-4 py-1 rounded">Referral Link</button>
-                    <button className="bg-yellow-500 text-black px-4 py-1 rounded">Upgrade</button>
+                    <button className="bg-yellow-500 text-black px-4 py-1 rounded text-sm">
+                        Referral Link
+                    </button>
+                    <button className="bg-yellow-500 text-black px-4 py-1 rounded text-sm">
+                        Upgrade
+                    </button>
                 </div>
             </div>
 
+            {/* Energy Balance */}
             <div className="mt-3 bg-gray-800 p-3 text-center rounded-lg w-full">
-                <p className="text-yellow-300">TODAY ENERGY BALANCE</p>
+                <p className="text-yellow-300 text-sm">TODAY ENERGY BALANCE</p>
                 <h1 className="text-3xl font-bold">{energy}</h1>
             </div>
 
-
-            <div className="p-4 m-3 bg-gray-800 rounded-lg w-full overflow-hidden" style={{ background: 'rgba(29, 32, 37, 0.8)' }}>
+            {/* Tap Section */}
+            <div
+                ref={tapSectionRef}
+                className="p-4 m-3 bg-gray-800 rounded-lg w-full touch-none select-none"
+                style={{ background: 'rgba(29, 32, 37, 0.8)' }}
+            >
+                {/* Autoclicker and Leaderboard */}
                 <div className="flex justify-between w-full">
                     <div className="relative">
                         <div className="flex items-center space-x-2">
-                            <span className="text-white text-sm">AUTOCICKER</span>
+                            <span className="text-white text-sm">AUTOCLICKER</span>
                             <button
                                 onClick={() => setShowAutoclickerInfo(true)}
-                                className="text-black rounded-full w-5 h-5 flex items-center justify-center text-xs"
+                                className="text-black rounded-full w-5 h-5 flex items-center justify-center text-xs bg-gray-300"
                             >
                                 ℹ️
                             </button>
@@ -105,7 +133,7 @@ const Herosection = ({ username }) => {
                         >
                             <div className="flex">
                                 <span
-                                    className={`w-12 h-6 rounded-full flex items-center p-1 ${autoClicker ? "bg-green-500 justify-end" : "bg-red-500 justify-start"
+                                    className={`w-12 h-6 rounded-full flex items-center p-1 transition-colors ${autoClicker ? "bg-green-500 justify-end" : "bg-red-500 justify-start"
                                         }`}
                                 >
                                     <span className="w-4 h-4 bg-white rounded-full"></span>
@@ -114,21 +142,26 @@ const Herosection = ({ username }) => {
                         </button>
                     </div>
 
-                    <div className="text-white px- transition-colors">
+                    <div className="text-white transition-colors">
                         <div className="flex space-x-2 text-lg">
                             Leaderboard
                         </div>
                         <div className="flex items-center space-x-2 item-right">
-                            <img src={leader_board} width={35} alt="" srcset="" />
+                            <img src={leader_board} width={35} alt="Leaderboard" />
                         </div>
                     </div>
                 </div>
 
-                <div className="mt-3 p-3 relative flex justify-center" onClick={handleTap}>
+                {/* Coin Tap Area */}
+                <div
+                    className="mt-3 p-3 relative flex justify-center touch-none"
+                    onClick={handleTap}
+                >
                     <motion.img
+                        ref={coinRef}
                         src={cryptocoin}
                         alt="coin"
-                        className="w-40 cursor-pointer select-none"
+                        className="w-40 cursor-pointer select-none touch-none"
                         animate={{ rotate: rotation, scale: scale }}
                         transition={{ duration: 0.2, ease: "easeInOut" }}
                     />
@@ -136,7 +169,7 @@ const Herosection = ({ username }) => {
                     {tapEffects.map((effect) => (
                         <motion.span
                             key={effect.id}
-                            className="absolute text-yellow-400 text-lg font-bold"
+                            className="absolute text-yellow-400 text-lg font-bold select-none touch-none"
                             initial={{ opacity: 100, y: 0, scale: 1 }}
                             animate={{ opacity: 0, y: effect.y, scale: 3 }}
                             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -147,56 +180,62 @@ const Herosection = ({ username }) => {
                     ))}
                 </div>
 
+                {/* Bottom Section */}
                 <div className="flex justify-between w-full mt-3">
-                    <div className="flex-col items-center space-x-2">
-                        <img src={autumn_promo} alt="" width={35} />
-                        <div>BitMEM</div>
+                    <div className="flex flex-col items-center">
+                        <img src={autumn_promo} alt="Promo" width={35} />
+                        <div className="text-xs mt-1">BitMEM</div>
                     </div>
-                    <div className="flex-col items-center">
-                        <img src={btn} alt="" width={35} />
-                        <div>BitMEM</div>
+                    <div className="flex flex-col items-center">
+                        <img src={btn} alt="Button" width={35} />
+                        <div className="text-xs mt-1">BitMEM</div>
                     </div>
                 </div>
 
-                <p className="mt-2 text-yellow-400">TAPS LEFT: ⚡ {tapsLeft}</p>
-                <div className="w-full max-w-sm bg-gray-700 rounded-full h-4 mt-2">
+                {/* Taps Progress */}
+                <p className="mt-2 text-yellow-400 text-center">TAPS LEFT: ⚡ {tapsLeft}</p>
+                <div className="w-full max-w-sm bg-gray-700 rounded-full h-4 mt-2 mx-auto">
                     <div
-                        className="bg-yellow-500 h-4 rounded-full"
-                        style={{ width: `${(tapsLeft / 100) * 100}%` }}
+                        className="bg-yellow-500 h-4 rounded-full transition-all duration-300"
+                        style={{ width: `${tapsLeft}%` }}
                     ></div>
                 </div>
             </div>
 
-
+            {/* Autoclicker Info Modal */}
             {showAutoclickerInfo && (
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 50 }}
                     className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+                    onClick={closeAutoclickerInfo}
                 >
                     <motion.div
-                        className="bg-[#0d1b2a] p-3 rounded-lg max-w-md w-full mx-4 border border-[#2d3a4b] shadow-lg"
+                        className="bg-[#0d1b2a] p-4 rounded-lg max-w-md w-full mx-4 border border-[#2d3a4b] shadow-lg"
                         initial={{ scale: 0.9 }}
                         animate={{ scale: 1 }}
                         exit={{ scale: 0.9 }}
+                        onClick={(e) => e.stopPropagation()}
                     >
-                        <div className="flex justify-between items-center mb-2">
-                            <h2 className="text-lg font-bold text-yellow-500">AUTOCUCKER</h2>
+                        <div className="flex justify-between items-center mb-3">
+                            <h2 className="text-lg font-bold text-yellow-500">AUTOCLICKER</h2>
                             <button
                                 onClick={closeAutoclickerInfo}
-                                className="text-white text-sm hover:text-yellow-500"
+                                className="text-white hover:text-yellow-500 text-xl"
                             >
                                 ✕
                             </button>
                         </div>
-                        <p className="text-white text-sm mb-2">
-                            Autoclicker is a bot that collects energy and BitMEM for you in exchange for taps. The bot’s commission is 15%. Enable it every 24 hours to keep it running. Available higher from NFT Premium and higher.
+                        <p className="text-white text-sm mb-4">
+                            Autoclicker is a bot that collects energy and BitMEM for you in exchange for taps.
+                            The bot's commission is 15%. Enable it every 24 hours to keep it running.
+                            Available higher from NFT Premium and higher.
                         </p>
-                        <div className="flex items-center space-x-2 mt-2">
+                        <div className="flex justify-end">
                             <button
                                 onClick={closeAutoclickerInfo}
-                                className="bg-yellow-500 text-black px-3 py-1 rounded text-xs hover:bg-yellow-400 transition-colors"
+                                className="bg-yellow-500 text-black px-4 py-2 rounded text-sm hover:bg-yellow-400 transition-colors"
                             >
                                 CLOSE
                             </button>
