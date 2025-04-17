@@ -15,12 +15,6 @@ const EnergyPage = () => {
     { name: "Airdrop on TON", logo: "💎", rewards: 1000, unit: "TON" },
   ];
 
-  const handleAddWallet = () => {
-    
-
-
-  };
-
   return (
     <div className="text-white min-h-screen flex flex-col items-center justify-center font-bold">
       <BackButton />
@@ -32,13 +26,7 @@ const EnergyPage = () => {
 
         <div className="mb-6">
           <p className="text-sm text-gray-400 mb-2">WALLET FOR AIRDROPS</p>
-          <button
-            onClick={handleAddWallet}
-            className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-400 transition-colors"
-          >
             <TonConnectButton/>
-            ADD YOUR WALLET
-          </button>
         </div>
 
         <div className="mb-6">

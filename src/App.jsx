@@ -54,7 +54,7 @@ function App() {
           backgroundImage: `url('${bg}')`,
         }}
       >
-        <TonConnectUIProvider manifestUrl="">
+        <TonConnectUIProvider manifestUrl="https://raw.githubusercontent.com/Harsh00CE/telegramminiapp/refs/heads/master/ton.json">
           <Routes>
             <Route path="/" element={<Herosection username={username} />} />
             <Route path="/mybank" element={<Mybank />} />
