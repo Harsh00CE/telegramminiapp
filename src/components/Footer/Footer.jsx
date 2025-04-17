@@ -17,7 +17,7 @@ const Footer = () => {
             </button>
             <div className="relative">
                 <button
-                    onClick={() => navigate("/home")}
+                    onClick={() => navigate("/")}
                     className="w-14 h-14 rounded-full bg-yellow-400 text-black shadow-md shadow-yellow-300 flex items-center justify-center text-3xl border-4 border-white hover:scale-110 transition-transform"
                 >
                     🏠
