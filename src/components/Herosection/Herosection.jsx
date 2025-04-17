@@ -16,6 +16,14 @@ const Herosection = ({ username }) => {
         document.addEventListener("gesturestart", (e) => e.preventDefault());
     }, []);
 
+    useEffect(() => {
+        const tg = window.Telegram.WebApp;
+        tg.MainButton.setText("Close App");
+        tg.MainButton.show();
+        tg.MainButton.onClick(() => tg.close());
+    }, []);
+
+
     const handleTap = (e) => {
         const tap = e.currentTarget;
         const rect = tap.getBoundingClientRect();
@@ -47,7 +55,7 @@ const Herosection = ({ username }) => {
     const toggleAutoclicker = () => {
         setAutoClicker(!autoClicker);
         if (!autoClicker) {
-            setShowAutoclickerInfo(true); 
+            setShowAutoclickerInfo(true);
         }
     };
 
@@ -60,7 +68,7 @@ const Herosection = ({ username }) => {
             <div className="w-full flex justify-between items-center p-4 bg-gray-900 rounded-lg">
                 <span>Hello , {username}</span>
                 <div className="flex gap-2">
-                    <button className="bg-yellow-500 text-black px-4 py-1 rounded">Referral1324655 Link</button>
+                    <button className="bg-yellow-500 text-black px-4 py-1 rounded">Referral Link</button>
                     <button className="bg-yellow-500 text-black px-4 py-1 rounded">Upgrade</button>
                 </div>
             </div>
