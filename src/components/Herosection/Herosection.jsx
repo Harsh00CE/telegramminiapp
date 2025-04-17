@@ -12,15 +12,20 @@ const Herosection = ({ username }) => {
     const [scale, setScale] = useState(1);
     const [showAutoclickerInfo, setShowAutoclickerInfo] = useState(false);
 
-    useEffect(() => {
-        document.addEventListener("gesturestart", (e) => e.preventDefault());
-    }, []);
+    Telegram.WebApp.showCloseButton();
 
     useEffect(() => {
-        const tg = window.Telegram.WebApp;
-        tg.MainButton.setText("Close App");
-        tg.MainButton.show();
-        tg.MainButton.onClick(() => tg.close());
+        if (window.Telegram && window.Telegram.WebApp) {
+            const tg = window.Telegram.WebApp;
+            tg.ready();          // Required to initialize Telegram WebApp
+            tg.expand();         // Optional: expand to full screen
+            tg.showCloseButton(); // ✅ Show Close button in the top-right (next to bot name)
+        }
+    }, []);
+
+
+    useEffect(() => {
+        document.addEventListener("gesturestart", (e) => e.preventDefault());
     }, []);
 
 
