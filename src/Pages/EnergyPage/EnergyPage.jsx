@@ -25,9 +25,12 @@ const EnergyPage = () => {
         </div>
 
         <div className="mb-6">
-          <p className="text-sm text-gray-400 mb-2">WALLET FOR AIRDROPS</p>
-            <TonConnectButton/>
+          <p className="text-sm flex justify-center items-center text-white mb-2">WALLET FOR AIRDROPS</p>
+          <div className="w-full flex justify-center items-center">
+            <TonConnectButton />
+          </div>
         </div>
+
 
         <div className="mb-6">
           <h2 className="text-lg mb-4">ACTIVE AIRDROPS</h2>
