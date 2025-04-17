@@ -30,8 +30,27 @@ import {
 } from "@tanstack/react-query";
 import { getDefaultConfig } from '@rainbow-me/rainbowkit';
 
-
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import {
+  metaMaskWallet,
+  rainbowWallet,
+  trustWallet,
+  walletConnectWallet,
+} from '@rainbow-me/rainbowkit/wallets';
+const connectors = connectorsForWallets(
+  [
+    {
+      groupName: 'Recommended',
+      wallets: [rainbowWallet, walletConnectWallet , trustWallet , metaMaskWallet],
+    },
+  ],
+  {
+    appName: 'My RainbowKit App',
+    projectId: 'YOUR_PROJECT_ID',
+  }
+);
 const config = getDefaultConfig({
+  connectors,
   appName: 'My RainbowKit App',
   projectId: 'YOUR_PROJECT_ID',
   chains: [mainnet, polygon, optimism, arbitrum, base],
