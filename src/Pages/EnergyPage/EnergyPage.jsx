@@ -14,9 +14,23 @@ const EnergyPage = () => {
     { name: "Airdrop on TON", logo: "💎", rewards: 1000, unit: "TON" },
   ];
 
+  const handleAddWallet = () => {
+    if (window.Telegram && window.Telegram.WebApp) {
+      const tg = window.Telegram.WebApp;
+      tg.MainButton.text = "Connecting to Wallet...";
+      tg.MainButton.show();
+
+      // Prompting user to connect their wallet using Telegram WebApp
+      tg.onEvent("mainButtonClicked", () => {
+        // You can initiate wallet connection here using Telegram WebApp API
+        // or provide instructions for connecting via Telegram's wallet system.
+        alert("Telegram wallet connection initiated.");
+      });
+    }
+  };
+
   return (
     <div className="text-white min-h-screen flex flex-col items-center justify-center font-bold">
-
       <BackButton />
       <div className="w-full max-w-md p-4">
         <div className="flex items-center mb-6">
@@ -26,7 +40,10 @@ const EnergyPage = () => {
 
         <div className="mb-6">
           <p className="text-sm text-gray-400 mb-2">WALLET FOR AIRDROPS</p>
-          <button className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-400 transition-colors">
+          <button
+            onClick={handleAddWallet}
+            className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-400 transition-colors"
+          >
             ADD YOUR WALLET
           </button>
         </div>
@@ -73,7 +90,6 @@ const EnergyPage = () => {
           <p>COMPLETED AIRDROPS</p>
         </div>
       </div>
-
     </div>
   );
 };

@@ -94,7 +94,7 @@ const Herosection = ({ username }) => {
                     <div className="relative">
                         <div className="flex items-center space-x-2"
                         >
-                            <span className="text-white text-sm">AUTOCUCKER</span>
+                            <span className="text-white text-sm">AUTOCICKER</span>
                             <button
                                 onClick={() => setShowAutoclickerInfo(true)}
                                 className="text-black rounded-full w-5 h-5 flex items-center justify-center text-xs"
