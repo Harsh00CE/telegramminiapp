@@ -73,7 +73,7 @@ const Herosection = ({ username }) => {
 
     return (
         <div className="text-white flex flex-col items-center p-4 no-zoom relative overflow-y-scroll overflow-x-hidden">
-            <div className="w-full flex justify-between items-center p-4 bg-gray-900 rounded-lg">
+            <div className="w-full flex justify-between items-center p-3 bg-gray-900 rounded-lg">
                 <span>Hello , {username}</span>
                 <div className="flex gap-2">
                     <button className="bg-yellow-500 text-black px-4 py-1 rounded">Referral Link</button>
@@ -81,21 +81,19 @@ const Herosection = ({ username }) => {
                 </div>
             </div>
 
-            <div className="mt-4 bg-gray-800 p-4 text-center rounded-lg w-full max-w-sm">
-                <p className="text-yellow-500">TODAY ENERGY BALANCE</p>
-                <h1 className="text-4xl font-bold">{energy}</h1>
+            <div className="mt-3 bg-gray-800 p-3 text-center rounded-lg w-full">
+                <p className="text-yellow-300">TODAY ENERGY BALANCE</p>
+                <h1 className="text-3xl font-bold">{energy}</h1>
             </div>
 
 
-            <div className="p-6 m-6 bg-gray-800 rounded-lg w-full" style={{ background: 'rgba(29, 32, 37, 0.8)' }}>
+            <div className="p-4 m-3 bg-gray-800 rounded-lg w-full" style={{ background: 'rgba(29, 32, 37, 0.8)' }}>
 
 
-                <div className="flex justify-between w-full max-w-sm mt-4">
-                    <div className="relative mt-2">
-                        <div className="flex items-center space-x-2 "
+                <div className="flex justify-between w-full">
+                    <div className="relative">
+                        <div className="flex items-center space-x-2"
                         >
-
-
                             <span className="text-white text-sm">AUTOCUCKER</span>
                             <button
                                 onClick={() => setShowAutoclickerInfo(true)}
@@ -106,9 +104,9 @@ const Herosection = ({ username }) => {
                         </div>
                         <button
                             onClick={toggleAutoclicker}
-                            className="px-4 py-2 flex items-center space-x-2"
+                            className="px-4 py-2 flex"
                         >
-                            <div className="flex items-center">
+                            <div className="flex">
                                 <span
                                     className={`w-12 h-6 rounded-full flex items-center p-1 ${autoClicker ? "bg-green-500 justify-end" : "bg-red-500 justify-start"
                                         }`}
@@ -119,8 +117,8 @@ const Herosection = ({ username }) => {
                         </button>
                     </div>
 
-                    <div className="text-white px- transition-colors m-2">
-                        <div className="flex items-center space-x-2 text-lg">
+                    <div className="text-white px- transition-colors">
+                        <div className="flex space-x-2 text-lg">
                             Leaderboard
                         </div>
                         <div className="flex items-center space-x-2 item-right">
@@ -129,7 +127,7 @@ const Herosection = ({ username }) => {
                     </div>
                 </div>
 
-                <div className="mt-6 p-5 relative flex justify-center items-center" onClick={handleTap}>
+                <div className="mt-3 p-3 relative flex justify-center" onClick={handleTap}>
                     <motion.img
                         src={cryptocoin}
                         alt="coin"
@@ -143,7 +141,7 @@ const Herosection = ({ username }) => {
                             key={effect.id}
                             className="absolute text-yellow-400 text-lg font-bold"
                             initial={{ opacity: 100, y: 0, scale: 1 }}
-                            animate={{ opacity: 1, y: effect.y, scale: 3 }}
+                            animate={{ opacity: 0, y: effect.y, scale: 3 }}
                             transition={{ duration: 0.6, ease: "easeOut" }}
                             style={{ left: `50%`, transform: `translate(-50%, 0) translate(${effect.x}px, 0)` }}
                         >
@@ -152,7 +150,7 @@ const Herosection = ({ username }) => {
                     ))}
                 </div>
 
-                <div className="flex justify-between w-full max-w-sm mt-4">
+                <div className="flex justify-between w-full mt-3">
                     <div className="flex-col items-center space-x-2">
                         <img src={autumn_promo} alt="" width={35} />
                         <div>BitMEM</div>
@@ -180,7 +178,7 @@ const Herosection = ({ username }) => {
                     className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
                 >
                     <motion.div
-                        className="bg-[#0d1b2a] p-4 rounded-lg max-w-md w-full mx-4 border border-[#2d3a4b] shadow-lg"
+                        className="bg-[#0d1b2a] p-3 rounded-lg max-w-md w-full mx-4 border border-[#2d3a4b] shadow-lg"
                         initial={{ scale: 0.9 }}
                         animate={{ scale: 1 }}
                         exit={{ scale: 0.9 }}
