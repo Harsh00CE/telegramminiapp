@@ -127,7 +127,7 @@ const Herosection = ({ username }) => {
                             key={effect.id}
                             className="absolute text-yellow-400 text-lg font-bold"
                             initial={{ y: 0, scale: 1 }}
-                            animate={{ y: effect.y, scale: 3 }}
+                            animate={{ opacity: 0, y: effect.y, scale: 3 }}
                             transition={{ duration: 0.6, ease: "easeOut" }}
                             style={{ left: `50%`, transform: `translate(-50%, 0) translate(${effect.x}px, 0)` }}
                         >
