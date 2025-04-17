@@ -21,9 +21,8 @@ const Herosection = ({ username }) => {
             const tg = window.Telegram.WebApp;
             tg.ready();
             tg.expand();
-            console.log(window.Telegram?.WebApp?.version); // Check the WebApp version
-
-            // Safe check for showCloseButton
+            console.log(window.Telegram?.WebApp?.version);
+            
             if (typeof tg.showCloseButton === "function") {
                 tg.showCloseButton();
             } else {
@@ -132,7 +131,7 @@ const Herosection = ({ username }) => {
 
                 <div className="mt-6 p-5 relative flex justify-center items-center" onClick={handleTap}>
                     <motion.img
-                        src={usdt}
+                        src={cryptocoin}
                         alt="coin"
                         className="w-40 cursor-pointer select-none"
                         animate={{ rotate: rotation, scale: scale }}
