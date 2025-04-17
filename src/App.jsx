@@ -13,6 +13,7 @@ import NewHerosection from "./components/Herosection/NewHerosection";
 import { TonConnectUIProvider } from "@tonconnect/ui-react";
 import '@rainbow-me/rainbowkit/styles.css';
 import {
+  darkTheme,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
@@ -84,7 +85,13 @@ function App() {
         {/* <TonConnectUIProvider manifestUrl="https://raw.githubusercontent.com/Harsh00CE/telegramminiapp/refs/heads/master/ton.json"> */}
         <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
-            <RainbowKitProvider>
+            <RainbowKitProvider theme={darkTheme({
+              // accentColor: '#7b3fe4',
+              // accentColorForeground: 'white',
+              // borderRadius: 'small',
+              // fontStack: 'system',
+              // overlayBlur: 'small',
+            })}>
               <Routes>
                 <Route path="/" element={<Herosection username={username} />} />
                 <Route path="/mybank" element={<Mybank />} />
