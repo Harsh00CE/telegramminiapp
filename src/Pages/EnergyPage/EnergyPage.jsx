@@ -1,20 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import BackButton from "../../components/Backbtn/src_components_BackButton";
 import { TonConnectButton } from "@tonconnect/ui-react";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
-import WebApp from "@twa-dev/sdk";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const EnergyPage = () => {
-  const [isTelegram, setIsTelegram] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.Telegram?.WebApp) {
-      WebApp.ready();
-      WebApp.expand(); // Optional: to auto-expand the mini app
-      setIsTelegram(true);
-    }
-  }, []);
-
   const airdrops = [
     { name: "Bitton", logo: "🅱️", rewards: 2000 },
     { name: "Blove Dapp", logo: "🔥", rewards: 2000 },
@@ -37,19 +26,13 @@ const EnergyPage = () => {
         </div>
 
         <div className="mb-6">
-          <p className="text-sm flex justify-center items-center text-white mb-2">
-            WALLET FOR AIRDROPS
-          </p>
+          <p className="text-sm flex justify-center items-center text-white mb-2">WALLET FOR AIRDROPS</p>
           <div className="w-full flex justify-center items-center">
-            {isTelegram ? (
-              <div className="bg-green-500 text-black px-4 py-2 rounded-full font-semibold">
-                Connected as @{WebApp.initDataUnsafe?.user?.username}
-              </div>
-            ) : (
-              <ConnectButton />
-            )}
-          </div>
+            {/* <TonConnectButton /> */}
+            <ConnectButton/>
+          </div>  
         </div>
+
 
         <div className="mb-6">
           <h2 className="text-lg mb-4">ACTIVE AIRDROPS</h2>
