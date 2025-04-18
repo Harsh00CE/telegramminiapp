@@ -34,7 +34,7 @@ const Herosection = ({ username }) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setTapsLeft((prev) => (prev < 1000 ? prev + 1 : prev));
+            setTapsLeft((prev) => (prev < 1000 ? prev + 5 : prev));
         }, 1000);
 
         return () => clearInterval(interval);
@@ -71,7 +71,6 @@ const Herosection = ({ username }) => {
 
 
 
-    // Initialize Telegram WebApp
     useEffect(() => {
         if (window.Telegram && window.Telegram.WebApp) {
             const tg = window.Telegram.WebApp;
