@@ -34,7 +34,7 @@ const Herosection = ({ username }) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setTapsLeft((prev) => (prev < 100 ? prev + 1 : prev));
+            setTapsLeft((prev) => (prev < 1000 ? prev + 1 : prev));
         }, 1000);
 
         return () => clearInterval(interval);
@@ -267,12 +267,15 @@ const Herosection = ({ username }) => {
 
                 {/* Taps Progress */}
                 <p className="mt-2 text-yellow-400 text-center">TAPS LEFT: ⚡ {tapsLeft}</p>
-                <div className="w-full max-w-sm bg-gray-700 rounded-full h-4 mt-2 mx-auto">
-                    <div
-                        className="bg-yellow-500 h-4 rounded-full transition-all duration-300"
-                        style={{ width: `${tapsLeft}%` }}
-                    ></div>
+                <div className="w-full flex justify-center mt-2">
+                    <div className="w-full bg-gray-700 rounded-full h-4 max-w-[90%]">
+                        <div
+                            className="bg-yellow-500 h-4 rounded-full transition-all duration-300"
+                            style={{ width: `${tapsLeft / 10}%` }}
+                        ></div>
+                    </div>
                 </div>
+
             </div>
 
             {/* Autoclicker Info Modal */}
