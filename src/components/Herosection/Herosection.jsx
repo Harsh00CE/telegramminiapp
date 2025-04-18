@@ -4,7 +4,7 @@ import { autumn_promo, btn, cryptocoin, leader_board } from "../../assets/imgs";
 
 const Herosection = ({ username }) => {
     const [energy, setEnergy] = useState(81);
-    const [tapsLeft, setTapsLeft] = useState(100);
+    const [tapsLeft, setTapsLeft] = useState(1000);
     const [autoClicker, setAutoClicker] = useState(false);
     const [tapEffects, setTapEffects] = useState([]);
     const [rotation, setRotation] = useState(0);
@@ -64,7 +64,7 @@ const Herosection = ({ username }) => {
 
                 return prevTaps - 1;
             });
-        }, 1000);
+        }, 2000);
 
         return () => clearInterval(interval);
     }, [autoClicker]);
