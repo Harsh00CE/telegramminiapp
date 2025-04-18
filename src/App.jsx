@@ -93,7 +93,7 @@ function App() {
   }, [webApp]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#0f1115] relative overflow-hidden">
+    <div className="flex flex-col bg-cover bg-[#0f1115] relative overflow-hidden">
       {/* Main Scrollable Area */}
       <div
         className="flex-1 overflow-y-auto pb-20 bg-cover bg-center"
