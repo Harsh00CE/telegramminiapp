@@ -47,6 +47,38 @@ const Herosection = ({ username }) => {
         }
     }, []);
 
+    const handleMultiTouchTap = (e) => {
+        e.preventDefault();
+
+        const touches = e.touches;
+        if (tapsLeft <= 0 || !touches) return;
+
+        let tapCount = Math.min(touches.length, tapsLeft);
+        setEnergy((prev) => prev + tapCount);
+        setTapsLeft((prev) => prev - tapCount);
+
+        // Apply visual effects for each touch
+        const rect = e.currentTarget.getBoundingClientRect();
+        const newEffects = Array.from(touches).slice(0, tapCount).map(() => ({
+            id: Date.now() + Math.random(),
+            x: Math.random() * 100 - 40,
+            y: Math.random() * -100 - 10,
+        }));
+
+        setTapEffects((prev) => [...prev, ...newEffects]);
+
+        setRotation((prev) => prev + 360);
+        setScale(1.2);
+        setTimeout(() => setScale(1), 200);
+
+        setTimeout(() => {
+            setTapEffects((prev) =>
+                prev.filter((effect) => !newEffects.some((ne) => ne.id === effect.id))
+            );
+        }, 600);
+    };
+
+
     const handleTap = (e) => {
         e.preventDefault();
 
@@ -155,8 +187,9 @@ const Herosection = ({ username }) => {
                 {/* Coin Tap Area */}
                 <div
                     className="mt-3 p-3 relative flex justify-center touch-none"
-                    onClick={handleTap}
+                    onTouchStart={handleMultiTouchTap}
                 >
+
                     <motion.img
                         ref={coinRef}
                         src={cryptocoin}
