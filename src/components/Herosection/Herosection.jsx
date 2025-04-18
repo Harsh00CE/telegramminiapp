@@ -31,6 +31,18 @@ const Herosection = ({ username }) => {
         };
     }, []);
 
+
+    useEffect(() => {
+        if (!autoClicker) return;
+
+        const interval = setInterval(() => {
+            setTapsLeft((prev) => (prev < 100 ? prev + 1 : prev));
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [autoClicker]);
+
+
     // Initialize Telegram WebApp
     useEffect(() => {
         if (window.Telegram && window.Telegram.WebApp) {
@@ -154,7 +166,7 @@ const Herosection = ({ username }) => {
                             <span className="text-white text-sm">AUTOCLICKER</span>
                             <button
                                 onClick={() => setShowAutoclickerInfo(true)}
-                                className="text-black rounded-full w-5 h-5 flex items-center justify-center text-xs bg-gray-300"
+                                className="text-black rounded-full w-5 h-5 flex items-center justify-center text-xs"
                             >
                                 ℹ️
                             </button>
