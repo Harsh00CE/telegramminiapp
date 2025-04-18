@@ -33,14 +33,42 @@ const Herosection = ({ username }) => {
 
 
     useEffect(() => {
-        if (!autoClicker) return;
-
         const interval = setInterval(() => {
             setTapsLeft((prev) => (prev < 100 ? prev + 1 : prev));
         }, 1000);
 
         return () => clearInterval(interval);
+    }, []);
+
+
+    useEffect(() => {
+        if (!autoClicker) return;
+
+        const interval = setInterval(() => {
+            setTapsLeft((prevTaps) => {
+                if (prevTaps <= 0) return prevTaps;
+
+                setEnergy((prevEnergy) => prevEnergy + 1);
+
+                // Add a ⚡ visual effect too (optional)
+                const newEffect = {
+                    id: Date.now() + Math.random(),
+                    x: Math.random() * 100 - 40,
+                    y: Math.random() * -100 - 10,
+                };
+                setTapEffects((prev) => [...prev, newEffect]);
+
+                setTimeout(() => {
+                    setTapEffects((prev) => prev.filter((fx) => fx.id !== newEffect.id));
+                }, 600);
+
+                return prevTaps - 1;
+            });
+        }, 1000);
+
+        return () => clearInterval(interval);
     }, [autoClicker]);
+
 
 
     // Initialize Telegram WebApp
