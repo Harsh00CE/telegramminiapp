@@ -59,8 +59,8 @@ Get your BTNs today!`,
 
 bot.action("Show_Presentation", async (ctx) => {
     try {
-        
-        
+
+
         const pdfPath = "./demo.pdf";
 
         await ctx.replyWithDocument({
@@ -74,4 +74,8 @@ bot.action("Show_Presentation", async (ctx) => {
     }
 });
 
-bot.launch();
+(async () => {
+    await bot.telegram.deleteWebhook(); // Remove existing webhook
+    await bot.launch(); // Start polling
+})();
+
