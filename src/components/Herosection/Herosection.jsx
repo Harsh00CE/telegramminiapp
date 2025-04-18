@@ -265,15 +265,17 @@ const Herosection = ({ username }) => {
                 </div>
 
                 {/* Taps Progress */}
-                <p className="mt-2 text-yellow-400 text-center">TAPS LEFT: ⚡ {tapsLeft}</p>
+                <p className="mt-2 text-yellow-400 text-center font-semibold">⚡ TAPS LEFT: {tapsLeft}</p>
+
                 <div className="w-full flex justify-center mt-2">
-                    <div className="w-full bg-gray-700 rounded-full h-4 max-w-[90%]">
+                    <div className="w-full max-w-[90%] h-5 bg-gray-700 rounded-full overflow-hidden shadow-inner border border-gray-600">
                         <div
-                            className="bg-yellow-500 h-4 rounded-full transition-all duration-300"
-                            style={{ width: `${tapsLeft / 10}%` }}
+                            className="h-full bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full transition-all duration-300 ease-in-out"
+                            style={{ width: `${Math.min(tapsLeft / 10, 100)}%` }}
                         ></div>
                     </div>
                 </div>
+
 
             </div>
 
