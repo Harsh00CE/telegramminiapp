@@ -34,7 +34,7 @@ const Herosection = ({ username }) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setTapsLeft((prev) => (prev < 1000 ? prev + 5 : prev));
+            setTapsLeft((prev) => (prev < 1000 ? prev + 1 : prev));
         }, 1000);
 
         return () => clearInterval(interval);
@@ -160,7 +160,7 @@ const Herosection = ({ username }) => {
     };
 
     return (
-        <div className="text-white flex flex-col items-center p-4 no-zoom relative overflow-y-auto overflow-x-hidden min-h-screen">
+        <div className="text-white flex flex-col items-center p-4 no-zoom relative overflow-y-hidden overflow-x-hidden min-h-screen">
             {/* Header Section */}
             <div className="w-full flex justify-between items-center p-3 bg-gray-900 rounded-lg sticky top-0 z-10">
                 <span>Hello, {username}</span>
